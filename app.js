@@ -26,7 +26,7 @@ const norm = s =>
 
 
 // CONSULTA DE ALOCAÇÃO
-// Lista atualizada: Dentista e Curso removidos.
+// Lista final aprovada, sem Dentista e Curso.
 const ALLOCATION_ACTIVITIES = [
   { name: "Atestado", activity: "Atividade Global", allocation: "Indisponível" },
   { name: "Ausência", activity: "Atividade Global", allocation: "Indisponível" },
@@ -159,25 +159,15 @@ function renderAllocation() {
 
       detail.append(label, title, path, description);
 
-      // AVISO OBRIGATÓRIO PARA INDISPONIBILIDADE
+      // Aviso obrigatório para Atividade Global → Indisponível.
       if (
         item.activity === 'Atividade Global' &&
         item.allocation === 'Indisponível'
       ) {
         const note = document.createElement('p');
-
         note.className = 'allocation-note';
-
         note.textContent =
           'Atenção: é obrigatório descrever o motivo da indisponibilidade no lançamento do Horácio. Não deixe a descrição em branco.';
-
-        note.style.marginTop = '12px';
-        note.style.padding = '12px 14px';
-        note.style.borderLeft = '4px solid #d97706';
-        note.style.borderRadius = '6px';
-        note.style.background = '#fff7ed';
-        note.style.color = '#92400e';
-        note.style.fontWeight = '600';
 
         detail.appendChild(note);
       }
@@ -208,8 +198,6 @@ function clean(raw, i) {
   };
 }
 
-// Remove Recursos Humanos somente da navegação.
-// As perguntas continuam preservadas na base.
 function cats() {
   return [
     ...new Set([
@@ -431,6 +419,7 @@ function openQuestion(id) {
   $('gmmb-guide').hidden = true;
   $('allocation-guide').hidden = true;
   $('detail').hidden = false;
+
   setActiveTab('faq');
 
   $('detailmeta').textContent = r.categoria;
@@ -479,11 +468,16 @@ function openQuestion(id) {
   window.scrollTo(0, 0);
 }
 
+// CONTROLE DAS ABAS
 function setActiveTab(tab) {
   $('tab-faq').classList.toggle('active', tab === 'faq');
   $('tab-gmmb').classList.toggle('active', tab === 'gmmb');
   $('tab-alocacao').classList.toggle('active', tab === 'alocacao');
+
   document.body.classList.toggle('gmmb-active', tab === 'gmmb');
+
+  // Esconde o cabeçalho principal somente na aba de alocação.
+  document.body.classList.toggle('allocation-active', tab === 'alocacao');
 }
 
 function showHome() {
@@ -491,6 +485,7 @@ function showHome() {
   $('detail').hidden = true;
   $('gmmb-guide').hidden = true;
   $('allocation-guide').hidden = true;
+
   setActiveTab('faq');
 }
 
@@ -499,7 +494,9 @@ function showGmmbGuide() {
   $('detail').hidden = true;
   $('gmmb-guide').hidden = false;
   $('allocation-guide').hidden = true;
+
   setActiveTab('gmmb');
+
   window.scrollTo(0, 0);
 }
 
@@ -508,8 +505,10 @@ function showAllocationGuide() {
   $('detail').hidden = true;
   $('gmmb-guide').hidden = true;
   $('allocation-guide').hidden = false;
+
   setActiveTab('alocacao');
   renderAllocation();
+
   window.scrollTo(0, 0);
 }
 
@@ -791,7 +790,18 @@ if (allocationSearchInput) {
   allocationSearchInput.addEventListener('input', renderAllocation);
 }
 
-// INICIALIZAÇÃO
-init();
-
 window.addEventListener('hashchange', route);
+
+window.addEventListener('keydown', e => {
+  if (
+    e.key === '/' &&
+    !['INPUT', 'TEXTAREA'].includes(
+      document.activeElement.tagName
+    )
+  ) {
+    e.preventDefault();
+    $('search').focus();
+  }
+});
+
+init();
