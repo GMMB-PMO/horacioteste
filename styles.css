@@ -1,4 +1,3 @@
-
 :root{--ink:#15243b;--muted:#64748b;--blue:#234d88;--line:#e3e9f0;--bg:#f6f8fb;--white:#fff}
 *{box-sizing:border-box}
 body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Arial,sans-serif;color:var(--ink);background:var(--bg);line-height:1.55}
@@ -167,11 +166,13 @@ footer{border-top:1px solid var(--line);background:white;padding:25px 0}
 .guide-subsection p{margin-bottom:12px}
 .guide-section blockquote{margin:8px 0 17px;padding:14px 18px;background:#f2f6fb;border-left:3px solid #6d91bb;border-radius:0 8px 8px 0;color:#304b6b}
 body.gmmb-active .search,body.gmmb-active .hero-foot{display:none}
+
 @media(max-width:800px){
   .nav{align-items:flex-start;padding-top:13px;padding-bottom:13px;gap:10px}
   .navright{flex-wrap:wrap;justify-content:flex-end}
   .status{margin-left:0}
 }
+
 @media(max-width:500px){
   .nav{flex-direction:column}
   .navright{justify-content:flex-start;width:100%;gap:4px}
@@ -220,4 +221,15 @@ body.gmmb-active .search,body.gmmb-active .hero-foot{display:none}
 .allocation-path-arrow{color:#52729d;font-weight:800}
 .allocation-path strong{color:#234d88}
 .allocation-detail p{font-size:12px;line-height:1.65;color:#64748b;margin:13px 0 0}
-@media(max-width:500px){.allocation-activity-button{padding:13px}.allocation-activity-name{font-size:13px}.allocation-activity-hint{font-size:10px}.allocation-detail{padding:16px}}
+
+@media(max-width:500px){
+  .allocation-activity-button{padding:13px}
+  .allocation-activity-name{font-size:13px}
+  .allocation-activity-hint{font-size:10px}
+  .allocation-detail{padding:16px}
+}
+
+/* Oculta o cabeçalho principal somente na aba Consulta de Alocação */
+body.allocation-active .hero{
+  display:none !important;
+}
