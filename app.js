@@ -1,4 +1,3 @@
-
 'use strict';
 
 const ICONS = {
@@ -26,7 +25,8 @@ const norm = s =>
     .trim();
 
 
-// Consulta de alocação: lista final aprovada, sem atividades antigas ou sinônimos extras.
+// CONSULTA DE ALOCAÇÃO
+// Lista atualizada: Dentista e Curso removidos.
 const ALLOCATION_ACTIVITIES = [
   { name: "Atestado", activity: "Atividade Global", allocation: "Indisponível" },
   { name: "Ausência", activity: "Atividade Global", allocation: "Indisponível" },
@@ -35,8 +35,6 @@ const ALLOCATION_ACTIVITIES = [
   { name: "Compromisso pessoal", activity: "Atividade Global", allocation: "Indisponível" },
   { name: "Consulta médica", activity: "Atividade Global", allocation: "Indisponível" },
   { name: "Cotação", activity: "Atividade Global", allocation: "Propostas e Orçamentos" },
-  { name: "Curso", activity: "Atividade Global", allocation: "Treinamento e Desenvolvimento" },
-  { name: "Dentista", activity: "Atividade Global", allocation: "Indisponível" },
   { name: "Disponibilidade", activity: "Atividade Global", allocation: "Disponibilidade / Sem Alocação" },
   { name: "Elaboração de proposta", activity: "Atividade Global", allocation: "Propostas e Orçamentos" },
   { name: "Exames médicos", activity: "Atividade Global", allocation: "Indisponível" },
@@ -61,19 +59,25 @@ const ALLOCATION_ACTIVITIES = [
 ];
 
 function normalizeAllocation(value) {
-  return String(value || '').normalize('NFD')
-    .replace(/[\u0300-\u036f]/g, '').toLowerCase()
-    .replace(/[–—-]/g, ' ').replace(/[^\w\s]/g, ' ')
-    .replace(/\s+/g, ' ').trim();
+  return String(value || '')
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase()
+    .replace(/[–—-]/g, ' ')
+    .replace(/[^\w\s]/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
 }
 
 function renderAllocation() {
   const input = $('allocation-search');
   const resultsRoot = $('allocation-results');
   const status = $('allocation-status');
+
   if (!input || !resultsRoot || !status) return;
 
   const query = normalizeAllocation(input.value);
+
   resultsRoot.replaceChildren();
 
   const matches = ALLOCATION_ACTIVITIES.filter(item =>
@@ -113,6 +117,7 @@ function renderAllocation() {
     const hint = document.createElement('span');
     hint.className = 'allocation-activity-hint';
     hint.textContent = 'Ver alocação →';
+
     button.append(name, hint);
 
     button.addEventListener('click', () => {
@@ -120,8 +125,10 @@ function renderAllocation() {
         el.classList.remove('selected');
         el.setAttribute('aria-expanded', 'false');
       });
+
       button.classList.add('selected');
       button.setAttribute('aria-expanded', 'true');
+
       detail.replaceChildren();
 
       const label = document.createElement('div');
@@ -133,20 +140,54 @@ function renderAllocation() {
 
       const path = document.createElement('div');
       path.className = 'allocation-path';
+
       const source = document.createElement('span');
       source.textContent = item.activity;
+
       const arrow = document.createElement('span');
       arrow.className = 'allocation-path-arrow';
       arrow.textContent = '→';
+
       const destination = document.createElement('strong');
       destination.textContent = item.allocation;
+
       path.append(source, arrow, destination);
 
       const description = document.createElement('p');
-      description.textContent = 'Selecione a atividade indicada no Horácio conforme o trabalho efetivamente realizado.';
+      description.textContent =
+        'Selecione a atividade indicada no Horácio conforme o trabalho efetivamente realizado.';
+
       detail.append(label, title, path, description);
+
+      // AVISO OBRIGATÓRIO PARA INDISPONIBILIDADE
+      if (
+        item.activity === 'Atividade Global' &&
+        item.allocation === 'Indisponível'
+      ) {
+        const note = document.createElement('p');
+
+        note.className = 'allocation-note';
+
+        note.textContent =
+          'Atenção: é obrigatório descrever o motivo da indisponibilidade no lançamento do Horácio. Não deixe a descrição em branco.';
+
+        note.style.marginTop = '12px';
+        note.style.padding = '12px 14px';
+        note.style.borderLeft = '4px solid #d97706';
+        note.style.borderRadius = '6px';
+        note.style.background = '#fff7ed';
+        note.style.color = '#92400e';
+        note.style.fontWeight = '600';
+
+        detail.appendChild(note);
+      }
+
       detail.hidden = false;
-      detail.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
+      detail.scrollIntoView({
+        behavior: 'smooth',
+        block: 'nearest'
+      });
     });
 
     list.appendChild(button);
@@ -474,23 +515,31 @@ function showAllocationGuide() {
 
 function route() {
   const hash = location.hash || '#inicio';
+
   if (hash === '#gmmb') {
     showGmmbGuide();
     return;
   }
+
   if (hash === '#alocacao') {
     showAllocationGuide();
     return;
   }
+
   if (hash.startsWith('#duvida/')) {
     const id = decodeURIComponent(hash.substring('#duvida/'.length));
     openQuestion(id);
     return;
   }
+
   showHome();
+
   if (hash === '#perguntas') {
     setTimeout(() => {
-      $('listtitle').scrollIntoView({behavior:'smooth',block:'start'});
+      $('listtitle').scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
     }, 50);
   }
 }
@@ -629,7 +678,7 @@ async function init() {
   }
 }
 
-// Sugestões automáticas de perguntas
+// SUGESTÕES AUTOMÁTICAS DE PERGUNTAS
 const searchInput = $('search');
 const searchBox = searchInput.closest('.search');
 
@@ -700,7 +749,7 @@ function renderSuggestions(value) {
   suggestionBox.hidden = false;
 }
 
-// Pesquisa
+// PESQUISA
 searchInput.addEventListener('input', e => {
   term = e.target.value;
   category = 'Todas';
@@ -729,7 +778,7 @@ document.addEventListener('click', e => {
   }
 });
 
-// Navegação
+// NAVEGAÇÃO
 $('all').onclick = () => select('Todas');
 
 $('back').onclick = () => {
@@ -737,22 +786,12 @@ $('back').onclick = () => {
 };
 
 const allocationSearchInput = $('allocation-search');
+
 if (allocationSearchInput) {
   allocationSearchInput.addEventListener('input', renderAllocation);
 }
 
-window.addEventListener('hashchange', route);
-
-window.addEventListener('keydown', e => {
-  if (
-    e.key === '/' &&
-    !['INPUT', 'TEXTAREA'].includes(
-      document.activeElement.tagName
-    )
-  ) {
-    e.preventDefault();
-    $('search').focus();
-  }
-});
-
+// INICIALIZAÇÃO
 init();
+
+window.addEventListener('hashchange', route);
