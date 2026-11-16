@@ -1,3 +1,4 @@
+
 :root{--ink:#15243b;--muted:#64748b;--blue:#234d88;--line:#e3e9f0;--bg:#f6f8fb;--white:#fff}
 *{box-sizing:border-box}
 body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Arial,sans-serif;color:var(--ink);background:var(--bg);line-height:1.55}
@@ -83,11 +84,7 @@ footer{border-top:1px solid var(--line);background:white;padding:25px 0}
   max-height:360px;
   overflow-y:auto;
 }
-
-.suggestions[hidden]{
-  display:none;
-}
-
+.suggestions[hidden]{display:none}
 .suggestion-item{
   display:flex;
   flex-direction:column;
@@ -101,26 +98,13 @@ footer{border-top:1px solid var(--line);background:white;padding:25px 0}
   text-align:left;
   color:var(--ink);
 }
-
-.suggestion-item:last-child{
-  border-bottom:0;
-}
-
-.suggestion-item:hover,
-.suggestion-item:focus{
+.suggestion-item:last-child{border-bottom:0}
+.suggestion-item:hover,.suggestion-item:focus{
   background:#f1f5fa;
   outline:none;
 }
-
-.suggestion-item strong{
-  font-size:14px;
-  font-weight:650;
-}
-
-.suggestion-item small{
-  font-size:12px;
-  color:var(--muted);
-}
+.suggestion-item strong{font-size:14px;font-weight:650}
+.suggestion-item small{font-size:12px;color:var(--muted)}
 
 @media(max-width:800px){
   .categories{grid-template-columns:repeat(2,minmax(0,1fr))}
@@ -148,7 +132,6 @@ footer{border-top:1px solid var(--line);background:white;padding:25px 0}
   .brand{font-size:17px}
 }
 
-
 /* Seção independente de orientações da GMMB */
 .gmmb-guide{max-width:940px;margin:0 auto}
 .guide-heading{margin-bottom:28px}
@@ -172,14 +155,12 @@ body.gmmb-active .search,body.gmmb-active .hero-foot{display:none}
   .navright{flex-wrap:wrap;justify-content:flex-end}
   .status{margin-left:0}
 }
-
 @media(max-width:500px){
   .nav{flex-direction:column}
   .navright{justify-content:flex-start;width:100%;gap:4px}
   .navtab{padding:8px 10px;font-size:12px}
   .guide-content{padding:20px}
 }
-
 
 /* Consulta de Alocação */
 .allocation-guide{max-width:940px;margin:0 auto}
@@ -209,7 +190,21 @@ body.gmmb-active .search,body.gmmb-active .hero-foot{display:none}
 
 /* Consulta de alocação: lista de atividades selecionáveis */
 .allocation-activity-list{display:grid;gap:8px}
-.allocation-activity-button{display:flex;align-items:center;justify-content:space-between;gap:14px;width:100%;text-align:left;background:#fff;border:1px solid var(--line);border-radius:10px;padding:15px 17px;color:var(--ink);cursor:pointer;transition:border-color .15s,background .15s,transform .15s}
+.allocation-activity-button{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:14px;
+  width:100%;
+  text-align:left;
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:10px;
+  padding:15px 17px;
+  color:var(--ink);
+  cursor:pointer;
+  transition:border-color .15s,background .15s,transform .15s;
+}
 .allocation-activity-button:hover{border-color:#9eb4d0;background:#f8fafd}
 .allocation-activity-button.selected{border-color:#52729d;background:#edf3fa}
 .allocation-activity-name{font-size:14px;font-weight:700;line-height:1.45}
@@ -221,7 +216,6 @@ body.gmmb-active .search,body.gmmb-active .hero-foot{display:none}
 .allocation-path-arrow{color:#52729d;font-weight:800}
 .allocation-path strong{color:#234d88}
 .allocation-detail p{font-size:12px;line-height:1.65;color:#64748b;margin:13px 0 0}
-
 @media(max-width:500px){
   .allocation-activity-button{padding:13px}
   .allocation-activity-name{font-size:13px}
@@ -229,7 +223,64 @@ body.gmmb-active .search,body.gmmb-active .hero-foot{display:none}
   .allocation-detail{padding:16px}
 }
 
-/* Oculta o cabeçalho principal somente na aba Consulta de Alocação */
-body.allocation-active .hero{
-  display:none !important;
+/* Tabela expansível de projetos e Gerentes do Projeto */
+.project-list-toggle{
+  margin:22px 0;
+  border:1px solid var(--line);
+  border-radius:12px;
+  background:#fff;
+  overflow:hidden;
+}
+.project-list-toggle summary{
+  list-style:none;
+  cursor:pointer;
+  background:#edf3fa;
+  color:#234d88;
+  font-weight:750;
+  padding:16px 20px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+}
+.project-list-toggle summary::-webkit-details-marker{display:none}
+.project-list-toggle summary::after{
+  content:"+";
+  font-size:22px;
+  line-height:1;
+}
+.project-list-toggle[open] summary::after{content:"−"}
+.project-list-toggle summary:hover{background:#e2edf9}
+.project-table-wrapper{
+  width:100%;
+  overflow-x:auto;
+  padding:12px;
+}
+.project-table{
+  width:100%;
+  border-collapse:collapse;
+  font-size:13px;
+  background:#fff;
+}
+.project-table th,.project-table td{
+  padding:12px;
+  border:1px solid var(--line);
+  text-align:left;
+  vertical-align:top;
+}
+.project-table th{
+  background:#f1f5f9;
+  color:var(--ink);
+  font-weight:750;
+}
+.project-table td:first-child{
+  white-space:nowrap;
+  font-weight:700;
+  color:#234d88;
+}
+.project-table tbody tr:hover{background:#f7f9fc}
+
+@media(max-width:600px){
+  .project-list-toggle summary{padding:14px;font-size:13px}
+  .project-table{min-width:650px}
 }
