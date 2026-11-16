@@ -75,16 +75,22 @@
 
         <div class="hero-allocation-content">
           <div class="eyebrow">CONSULTA OPERACIONAL</div>
-
           <h1>Onde devo alocar minhas atividades?</h1>
 
           <p>
             Encontre o nome da atividade na lista e clique nela para descobrir exatamente onde alocar suas horas no Horácio.
           </p>
 
-          <p class="allocation-hero-hint">
-            Digite para filtrar a lista. Depois, clique no nome da atividade para visualizar onde alocar.
-          </p>
+          <div class="search allocation-search">
+            <span aria-hidden="true">⌕</span>
+            <input
+              id="allocation-search"
+              type="search"
+              placeholder="Digite para filtrar a lista. Depois, clique no nome da atividade para visualizar onde alocar."
+              aria-label="Pesquisar atividade para alocação"
+              autocomplete="off"
+            >
+          </div>
         </div>
 
       </div>
@@ -247,19 +253,7 @@
 
       <!-- ABA 3: CONSULTA DE ALOCAÇÃO -->
       <section id="allocation-guide" class="allocation-guide" hidden>
-        <div class="allocation-search">
-          <span aria-hidden="true">⌕</span>
-          <input
-            id="allocation-search"
-            type="search"
-            placeholder="Pesquise uma atividade..."
-            aria-label="Pesquisar atividade para alocação"
-            autocomplete="off"
-          >
-        </div>
-
-        <div id="allocation-status" class="allocation-status" aria-live="polite">28 atividades disponíveis · Ordem alfabética</div>
-
+        <div id="allocation-status" class="allocation-status" aria-live="polite"></div>
         <div id="allocation-results" class="allocation-results" aria-live="polite"></div>
       </section>
 
