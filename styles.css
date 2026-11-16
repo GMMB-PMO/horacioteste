@@ -85,9 +85,7 @@ footer{border-top:1px solid var(--line);background:white;padding:25px 0}
   overflow-y:auto;
 }
 
-.suggestions[hidden]{
-  display:none;
-}
+.suggestions[hidden]{display:none}
 
 .suggestion-item{
   display:flex;
@@ -103,9 +101,7 @@ footer{border-top:1px solid var(--line);background:white;padding:25px 0}
   color:var(--ink);
 }
 
-.suggestion-item:last-child{
-  border-bottom:0;
-}
+.suggestion-item:last-child{border-bottom:0}
 
 .suggestion-item:hover,
 .suggestion-item:focus{
@@ -113,15 +109,8 @@ footer{border-top:1px solid var(--line);background:white;padding:25px 0}
   outline:none;
 }
 
-.suggestion-item strong{
-  font-size:14px;
-  font-weight:650;
-}
-
-.suggestion-item small{
-  font-size:12px;
-  color:var(--muted);
-}
+.suggestion-item strong{font-size:14px;font-weight:650}
+.suggestion-item small{font-size:12px;color:var(--muted)}
 
 @media(max-width:800px){
   .categories{grid-template-columns:repeat(2,minmax(0,1fr))}
@@ -165,7 +154,8 @@ footer{border-top:1px solid var(--line);background:white;padding:25px 0}
 .guide-subsection h4{font-size:15px;color:#31577f;margin:0 0 10px}
 .guide-subsection p{margin-bottom:12px}
 .guide-section blockquote{margin:8px 0 17px;padding:14px 18px;background:#f2f6fb;border-left:3px solid #6d91bb;border-radius:0 8px 8px 0;color:#304b6b}
-body.gmmb-active .search,body.gmmb-active .hero-foot{display:none}
+body.gmmb-active .search,
+body.gmmb-active .hero-foot{display:none}
 
 @media(max-width:800px){
   .nav{align-items:flex-start;padding-top:13px;padding-bottom:13px;gap:10px}
@@ -180,7 +170,7 @@ body.gmmb-active .search,body.gmmb-active .hero-foot{display:none}
   .guide-content{padding:20px}
 }
 
-/* Tabela de projetos da GMMB */
+/* Tabela de projetos - estilos mantidos para compatibilidade */
 .project-list-toggle{
   margin-top:18px;
   border:1px solid var(--line);
@@ -197,50 +187,15 @@ body.gmmb-active .search,body.gmmb-active .hero-foot{display:none}
   list-style:none;
 }
 
-.project-list-toggle summary::-webkit-details-marker{
-  display:none;
-}
+.project-list-toggle summary::-webkit-details-marker{display:none}
+.project-list-toggle summary::after{content:"+";float:right;font-size:20px;line-height:1}
+.project-list-toggle[open] summary::after{content:"−"}
 
-.project-list-toggle summary::after{
-  content:"+";
-  float:right;
-  font-size:20px;
-  line-height:1;
-}
-
-.project-list-toggle[open] summary::after{
-  content:"−";
-}
-
-.project-table-wrapper{
-  overflow-x:auto;
-  padding:0 14px 14px;
-}
-
-.project-table{
-  width:100%;
-  border-collapse:collapse;
-  background:#fff;
-  font-size:13px;
-}
-
-.project-table th,
-.project-table td{
-  padding:12px;
-  text-align:left;
-  border:1px solid var(--line);
-  vertical-align:top;
-}
-
-.project-table th{
-  background:#edf3fa;
-  color:#234d88;
-  font-weight:750;
-}
-
-.project-table tbody tr:nth-child(even){
-  background:#f8fafd;
-}
+.project-table-wrapper{overflow-x:auto;padding:0 14px 14px}
+.project-table{width:100%;border-collapse:collapse;background:#fff;font-size:13px}
+.project-table th,.project-table td{padding:12px;text-align:left;border:1px solid var(--line);vertical-align:top}
+.project-table th{background:#edf3fa;color:#234d88;font-weight:750}
+.project-table tbody tr:nth-child(even){background:#f8fafd}
 
 /* Consulta de Alocação */
 .allocation-guide{max-width:940px;margin:0 auto}
@@ -298,12 +253,12 @@ body.gmmb-active .search,body.gmmb-active .hero-foot{display:none}
   .allocation-detail{padding:16px}
 }
 
-/* Botão da seção 5: acesso à Consulta de Alocação */
+/* Botões de navegação da GMMB */
 .allocation-cta{
   display:inline-flex;
   align-items:center;
   justify-content:center;
-  margin-top:12px;
+  margin:8px 0 18px;
   padding:12px 20px;
   background:#263d35;
   color:#fff !important;
@@ -313,9 +268,7 @@ body.gmmb-active .search,body.gmmb-active .hero-foot{display:none}
   transition:background .2s ease;
 }
 
-.allocation-cta:hover{
-  background:#3d5b4e;
-}
+.allocation-cta:hover{background:#3d5b4e}
 
 /* Esconde o cabeçalho principal somente na Consulta de Alocação */
 body:has(#allocation-guide:not([hidden])) .hero{
