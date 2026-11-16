@@ -23,6 +23,7 @@ button{cursor:pointer}
 .search{background:white;color:#53657d;border-radius:12px;max-width:800px;display:flex;align-items:center;gap:14px;padding:0 19px;box-shadow:0 16px 35px #0b1c3140;position:relative}
 .search span{font-size:30px}
 .search input{height:64px;border:0;outline:0;width:100%;min-width:0;color:var(--ink);font-size:15px}
+.search input::placeholder{color:#8290a2;opacity:1}
 .search kbd{background:#eef2f6;border-radius:5px;padding:2px 8px;font-size:12px}
 .hero-foot{display:flex;gap:20px;justify-content:space-between;max-width:800px;font-size:12px;color:#c5d7ed;margin-top:15px}
 .content{padding:48px 0 80px;min-height:60vh}
@@ -112,32 +113,22 @@ footer{border-top:1px solid var(--line);background:white;padding:25px 0}
 .guide-subsection p{margin-bottom:12px}
 .guide-section blockquote{margin:8px 0 17px;padding:14px 18px;background:#f2f6fb;border-left:3px solid #6d91bb;border-radius:0 8px 8px 0;color:#304b6b}
 
-/* Alternância dos conteúdos do cabeçalho azul */
+/* Alternância dos conteúdos da faixa azul */
 .hero-faq-content{display:block}
 .hero-gmmb-content,.hero-allocation-content{display:none}
-
 body.gmmb-active .hero-faq-content,
 body.allocation-active .hero-faq-content{display:none}
-
 body.gmmb-active .hero-gmmb-content{display:block}
 body.allocation-active .hero-allocation-content{display:block}
 
-body.gmmb-active .hero-faq-content .search,
-body.gmmb-active .hero-faq-content .hero-foot{display:none}
-
-.hero-allocation-content .allocation-hero-hint{
-  color:#b8d0ef;
-  font-size:13px;
-  margin:18px 0 0;
-}
+/* Pesquisa da Consulta de Alocação dentro da faixa azul */
+.allocation-search{max-width:800px;margin-top:28px}
+.allocation-search input{height:64px}
+.allocation-search input::placeholder{color:#8290a2;opacity:1}
 
 /* Consulta de Alocação */
 .allocation-guide{max-width:940px;margin:0 auto}
-.allocation-search{display:flex;align-items:center;gap:12px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:0 17px;box-shadow:0 3px 12px rgba(20,35,55,.04)}
-.allocation-search>span{font-size:27px;color:#64748b}
-.allocation-search input{height:58px;width:100%;min-width:0;border:0;outline:0;background:transparent;color:var(--ink);font-size:15px}
-.allocation-search input::placeholder{color:#9aa6b5}
-.allocation-status{font-size:12px;color:#64748b;margin:15px 2px 12px}
+.allocation-status{font-size:12px;color:#64748b;margin:0 2px 12px}
 .allocation-results{display:grid;gap:12px}
 .allocation-empty{background:#fff;border:1px solid var(--line);border-radius:12px;padding:30px;text-align:center;color:#64748b;font-size:13px}
 
@@ -155,14 +146,11 @@ body.gmmb-active .hero-faq-content .hero-foot{display:none}
 .allocation-path-arrow{color:#52729d;font-weight:800}
 .allocation-path strong{color:#234d88}
 .allocation-detail p{font-size:12px;line-height:1.65;color:#64748b;margin:13px 0 0}
-.allocation-note{border-top:1px solid var(--line);margin-top:25px;padding-top:17px;color:#64748b;font-size:12px;line-height:1.65}
 
-@media(max-width:800px){
-  .allocation-search input{font-size:14px}
-}
 @media(max-width:500px){
   .guide-content{padding:20px}
-  .allocation-search input{font-size:13px}
+  .allocation-search{margin-top:23px}
+  .allocation-search input{font-size:12px}
   .allocation-activity-button{padding:13px}
   .allocation-activity-name{font-size:13px}
   .allocation-activity-hint{font-size:10px}
