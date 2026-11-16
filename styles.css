@@ -84,9 +84,7 @@ footer{border-top:1px solid var(--line);background:white;padding:25px 0}
   max-height:360px;
   overflow-y:auto;
 }
-
 .suggestions[hidden]{display:none}
-
 .suggestion-item{
   display:flex;
   flex-direction:column;
@@ -100,15 +98,8 @@ footer{border-top:1px solid var(--line);background:white;padding:25px 0}
   text-align:left;
   color:var(--ink);
 }
-
 .suggestion-item:last-child{border-bottom:0}
-
-.suggestion-item:hover,
-.suggestion-item:focus{
-  background:#f1f5fa;
-  outline:none;
-}
-
+.suggestion-item:hover,.suggestion-item:focus{background:#f1f5fa;outline:none}
 .suggestion-item strong{font-size:14px;font-weight:650}
 .suggestion-item small{font-size:12px;color:var(--muted)}
 
@@ -123,7 +114,6 @@ footer{border-top:1px solid var(--line);background:white;padding:25px 0}
   .status{font-size:12px}
   .questionshead{margin-top:43px}
 }
-
 @media(max-width:500px){
   .wrap{width:calc(100% - 28px)}
   .categories{gap:10px}
@@ -154,48 +144,19 @@ footer{border-top:1px solid var(--line);background:white;padding:25px 0}
 .guide-subsection h4{font-size:15px;color:#31577f;margin:0 0 10px}
 .guide-subsection p{margin-bottom:12px}
 .guide-section blockquote{margin:8px 0 17px;padding:14px 18px;background:#f2f6fb;border-left:3px solid #6d91bb;border-radius:0 8px 8px 0;color:#304b6b}
-body.gmmb-active .search,
-body.gmmb-active .hero-foot{display:none}
+body.gmmb-active .search,body.gmmb-active .hero-foot{display:none}
 
 @media(max-width:800px){
   .nav{align-items:flex-start;padding-top:13px;padding-bottom:13px;gap:10px}
   .navright{flex-wrap:wrap;justify-content:flex-end}
   .status{margin-left:0}
 }
-
 @media(max-width:500px){
   .nav{flex-direction:column}
   .navright{justify-content:flex-start;width:100%;gap:4px}
   .navtab{padding:8px 10px;font-size:12px}
   .guide-content{padding:20px}
 }
-
-/* Tabela de projetos - estilos mantidos para compatibilidade */
-.project-list-toggle{
-  margin-top:18px;
-  border:1px solid var(--line);
-  border-radius:12px;
-  background:#f8fafd;
-  overflow:hidden;
-}
-
-.project-list-toggle summary{
-  cursor:pointer;
-  padding:16px 18px;
-  color:#234d88;
-  font-weight:700;
-  list-style:none;
-}
-
-.project-list-toggle summary::-webkit-details-marker{display:none}
-.project-list-toggle summary::after{content:"+";float:right;font-size:20px;line-height:1}
-.project-list-toggle[open] summary::after{content:"−"}
-
-.project-table-wrapper{overflow-x:auto;padding:0 14px 14px}
-.project-table{width:100%;border-collapse:collapse;background:#fff;font-size:13px}
-.project-table th,.project-table td{padding:12px;text-align:left;border:1px solid var(--line);vertical-align:top}
-.project-table th{background:#edf3fa;color:#234d88;font-weight:750}
-.project-table tbody tr:nth-child(even){background:#f8fafd}
 
 /* Consulta de Alocação */
 .allocation-guide{max-width:940px;margin:0 auto}
@@ -220,16 +181,8 @@ body.gmmb-active .hero-foot{display:none}
 .allocation-check{color:#234d88;font-weight:800}
 .allocation-empty{background:#fff;border:1px solid var(--line);border-radius:12px;padding:30px;text-align:center;color:#64748b;font-size:13px}
 .allocation-note{border-top:1px solid var(--line);margin-top:25px;padding-top:17px;color:#64748b;font-size:12px;line-height:1.65}
-
-@media(max-width:800px){
-  .allocation-card{padding:16px}
-  .navright{flex-wrap:wrap}
-}
-
-@media(max-width:500px){
-  .allocation-search input{font-size:13px}
-  .allocation-guide .guide-heading h2{font-size:25px}
-}
+@media(max-width:800px){.allocation-card{padding:16px}.navright{flex-wrap:wrap}}
+@media(max-width:500px){.allocation-search input{font-size:13px}.allocation-guide .guide-heading h2{font-size:25px}}
 
 /* Consulta de alocação: lista de atividades selecionáveis */
 .allocation-activity-list{display:grid;gap:8px}
@@ -245,32 +198,10 @@ body.gmmb-active .hero-foot{display:none}
 .allocation-path-arrow{color:#52729d;font-weight:800}
 .allocation-path strong{color:#234d88}
 .allocation-detail p{font-size:12px;line-height:1.65;color:#64748b;margin:13px 0 0}
+@media(max-width:500px){.allocation-activity-button{padding:13px}.allocation-activity-name{font-size:13px}.allocation-activity-hint{font-size:10px}.allocation-detail{padding:16px}}
 
-@media(max-width:500px){
-  .allocation-activity-button{padding:13px}
-  .allocation-activity-name{font-size:13px}
-  .allocation-activity-hint{font-size:10px}
-  .allocation-detail{padding:16px}
-}
-
-/* Botões de navegação da GMMB */
-.allocation-cta{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  margin:8px 0 18px;
-  padding:12px 20px;
-  background:#263d35;
-  color:#fff !important;
-  text-decoration:none;
-  font-weight:600;
-  border-radius:6px;
-  transition:background .2s ease;
-}
-
-.allocation-cta:hover{background:#3d5b4e}
-
-/* Esconde o cabeçalho principal somente na Consulta de Alocação */
+/* CORREÇÃO: esconde o cabeçalho principal nas abas GMMB e Alocação */
+body.gmmb-active .hero,
 body:has(#allocation-guide:not([hidden])) .hero{
   display:none;
 }
