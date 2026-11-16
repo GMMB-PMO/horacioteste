@@ -154,11 +154,7 @@ function renderAllocation() {
 
       path.append(source, arrow, destination);
 
-      const description = document.createElement('p');
-      description.textContent =
-        'Selecione a atividade indicada no Horácio conforme o trabalho efetivamente realizado.';
-
-      detail.append(label, title, path, description);
+      detail.append(label, title, path);
 
       // Aviso obrigatório para Atividade Global → Indisponível.
       if (
