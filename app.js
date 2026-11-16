@@ -1,3 +1,4 @@
+
 'use strict';
 
 const ICONS = {
@@ -209,31 +210,6 @@ function cats() {
 
 function count(c) {
   return records.filter(r => r.categoria === c).length;
-}
-
-function renderCats() {
-  const root = $('categories');
-  root.replaceChildren();
-
-  cats().forEach(c => {
-    const b = document.createElement('button');
-    b.className = 'category';
-
-    const icon = document.createElement('span');
-    icon.className = 'cat-icon';
-    icon.textContent = ICONS[c] || '▦';
-
-    const name = document.createElement('strong');
-    name.textContent = c;
-
-    const n = document.createElement('small');
-    n.textContent = `${count(c)} orientações`;
-
-    b.append(icon, name, n);
-    b.onclick = () => select(c);
-
-    root.append(b);
-  });
 }
 
 function renderFilters() {
@@ -468,6 +444,7 @@ function openQuestion(id) {
   window.scrollTo(0, 0);
 }
 
+
 // CONTROLE DAS ABAS
 function setActiveTab(tab) {
   $('tab-faq').classList.toggle('active', tab === 'faq');
@@ -661,7 +638,6 @@ async function init() {
       throw new Error('Base de perguntas vazia.');
     }
 
-    renderCats();
     render();
     route();
 
@@ -676,6 +652,7 @@ async function init() {
       error.message;
   }
 }
+
 
 // SUGESTÕES AUTOMÁTICAS DE PERGUNTAS
 const searchInput = $('search');
@@ -748,6 +725,7 @@ function renderSuggestions(value) {
   suggestionBox.hidden = false;
 }
 
+
 // PESQUISA
 searchInput.addEventListener('input', e => {
   term = e.target.value;
@@ -777,9 +755,8 @@ document.addEventListener('click', e => {
   }
 });
 
-// NAVEGAÇÃO
-$('all').onclick = () => select('Todas');
 
+// NAVEGAÇÃO
 $('back').onclick = () => {
   location.hash = 'perguntas';
 };
