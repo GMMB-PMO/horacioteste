@@ -51,6 +51,22 @@
               Acessar plataforma
             </a>
           </p>
+
+          <div class="search">
+            <span aria-hidden="true">⌕</span>
+            <input
+              id="search"
+              type="search"
+              placeholder="Pesquise por uma dúvida, sistema ou palavra-chave..."
+              aria-label="Pesquisar dúvidas"
+              autocomplete="off"
+            >
+            <kbd>/</kbd>
+          </div>
+
+          <div class="hero-foot">
+            <span id="count"></span>
+          </div>
         </div>
 
         <div class="hero-gmmb-content">
@@ -63,22 +79,6 @@
           </p>
         </div>
 
-        <div class="search">
-          <span aria-hidden="true">⌕</span>
-          <input
-            id="search"
-            type="search"
-            placeholder="Pesquise por uma dúvida, sistema ou palavra-chave..."
-            aria-label="Pesquisar dúvidas"
-            autocomplete="off"
-          >
-          <kbd>/</kbd>
-        </div>
-
-        <div class="hero-foot">
-          <span id="count"></span>
-        </div>
-
       </div>
     </section>
 
@@ -89,25 +89,6 @@
       <!-- ABA 1: PERGUNTAS FREQUENTES -->
 
       <div id="home">
-
-        <!-- BLOCO DE CATEGORIAS OCULTO, MANTIDO PARA COMPATIBILIDADE COM app.js -->
-
-        <div hidden>
-          <div class="sectionhead">
-            <div>
-              <div class="eyebrow dark">ENCONTRE POR ASSUNTO</div>
-              <h2>Explore as categorias</h2>
-            </div>
-
-            <button class="textbutton" id="all">
-              Ver todas as dúvidas →
-            </button>
-          </div>
-
-          <div id="categories" class="categories"></div>
-        </div>
-
-        <!-- PERGUNTAS FREQUENTES: MANTIDAS -->
 
         <div class="sectionhead questionshead" id="perguntas">
           <div>
