@@ -63,13 +63,13 @@
     "materiais": ""
   },
   {
-    "id": "HOR-008",
-    "pergunta": "Como devo registrar horas extras?",
-    "resposta": "Se o lançamento ultrapassar a previsão de horas por dia, isso corresponde a horas extras e segue o processo padrão já definido.",
-    "categoria": "Ponto e jornada",
-    "palavras": "horas extras previsão diária excedente processo padrão",
-    "atualizacao": "06/11/2026",
-    "materiais": ""
+  "id": "HOR-008",
+  "pergunta": "Como devo registrar horas extras?",
+  "resposta": "Os lançamentos devem contemplar tanto as horas regulares quanto as horas extras, independentemente de haver compensação ou saldo no Banco de Horas.",
+  "categoria": "Ponto e jornada",
+  "palavras": "horas extras horas regulares compensação saldo Banco de Horas",
+  "atualizacao": "17/11/2026",
+  "materiais": ""
   },
   {
     "id": "HOR-009",
