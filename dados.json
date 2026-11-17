@@ -119,7 +119,7 @@
   {
     "id": "HOR-014",
     "pergunta": "O que significa a mensagem “Alocação excedente”?",
-    "resposta": "A mensagem está relacionada à quantidade de horas permitidas para alocação naquela atividade. Nesta fase, pode indicar erro de configuração, pois todos deveriam estar alocados nas atividades.\n\nInforme o projeto e a atividade para verificação.",
+    "resposta": "A indicação de “Alocação excedente” indica que há uma restrição em relação ao limite de quantidade de horas previstas para aquela atividade; logo, o lançamento de valor maior não poderá ser realizado. Neste caso, o colaborador deverá encaminhar ao GP do projeto em questão o nome do projeto (PRJXXX), a atividade em que está tentando lançar horas e a captura de tela para verificação.",
     "categoria": "Projetos",
     "palavras": "alocação excedente horas permitidas atividade erro configuração projeto",
     "atualizacao": "06/11/2026",
@@ -128,7 +128,7 @@
   {
     "id": "HOR-015",
     "pergunta": "O que significa a mensagem “Exceção permitida”?",
-    "resposta": "A mensagem indica uma flexibilização autorizada pelo Gerente para aquela situação. O lançamento pode ser realizado normalmente.",
+    "resposta": "A indicação “Exceção permitida” apenas indica que há uma flexibilização autorizada em relação ao limite de quantidade de horas previstas para aquela atividade; logo, o lançamento poderá ser realizado normalmente.",
     "categoria": "Projetos",
     "palavras": "exceção permitida flexibilização gerente lançar horas",
     "atualizacao": "06/11/2026",
